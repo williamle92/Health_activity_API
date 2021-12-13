@@ -2,16 +2,16 @@ from db import db
 
 class HealthLogModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    weight_in_pounds = db.Column(db.Integer, nullabe=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullabe=False)
-    user = db.relationship("User")
+    weight_in_pounds = db.Column(db.Integer, nullable=False)
+    user_username = db.Column(db.String(60), db.ForeignKey('user.username'), nullable=False)
+    users = db.relationship("User")
 
-    def __init__(self, weight_in_pounds,user_id):
+    def __init__(self, weight_in_pounds,user_username):
         self.weight_in_pounds = weight_in_pounds
-        self.user_id = user_id
+        self.user_username = user_username
     
     def json(self):
-        return {"data": {"weight in pounds": self.weight_in_pounds, "user id": self.user_id}}
+        return {"id":self.id,"weight in pounds": self.weight_in_pounds, "username": self.user_username}
 
        
     def save_to_db(self):
@@ -22,8 +22,9 @@ class HealthLogModel(db.Model):
         db.session.delete(self)
         db.session.commit()
     
-    def find_by_id(self, user_id):
-        return HealthLogModel.query.filter_by(user_id=user_id).first()
+    @classmethod
+    def find_by_id(self, id):
+        return HealthLogModel.query.filter_by(id=id).first()
 
     def __repr__(self):
         return f"Health Log \nweight in pounds: {self.weight_in_pounds}"
