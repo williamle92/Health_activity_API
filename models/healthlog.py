@@ -1,11 +1,11 @@
+from sqlalchemy.orm import backref
 from db import db
 
 class HealthLogModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     weight_in_pounds = db.Column(db.Integer, nullable=False)
     user_username = db.Column(db.String(60), db.ForeignKey('user.username'), nullable=False)
-    user = db.relationship("User")
-
+    
     def __init__(self, weight_in_pounds,user_username):
         self.weight_in_pounds = weight_in_pounds
         self.user_username = user_username

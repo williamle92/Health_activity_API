@@ -8,8 +8,8 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.Text(), nullable=False)
-    healthlogs = db.relationship('HealthLogModel', backref='User', lazy="dynamic")
-    activitylogs = db.relationship('ActivityLog', backref='User', lazy="dynamic")
+    healthlogs = db.relationship('HealthLogModel', backref='healthlogs', lazy="dynamic")
+    activitylogs = db.relationship('ActivityLog', backref='user', lazy="dynamic")
 
     def __init__(self, username, email, password):
         self.username = username

@@ -13,6 +13,7 @@ class ActivityLog(db.Model):
     rating = db.Column(db.String(25))
     time_elapsed = db.Column(db.Integer)
     description = db.Column(db.String(300))
+    
   
 
     def __init__(self,user_username, activity, rating, time_elapsed, description):
