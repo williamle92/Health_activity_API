@@ -23,7 +23,7 @@ class ActivityLog(db.Model):
         self.description = description
 
     def json(self):
-        return {"username": self.user_username, "activity": self.activity, "rating": self.rating, 'time elapsed': self.time_elapsed, "description": self.description}
+        return {"id": self.id, "username": self.user_username, "activity": self.activity, "rating": self.rating, 'time elapsed': self.time_elapsed, "description": self.description}
 
     def save_to_db(self):
         db.session.add(self)

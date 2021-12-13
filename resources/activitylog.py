@@ -35,7 +35,7 @@ class ActivityLogResource(Resource):
         activitylog = ActivityLog.find_by_id(id)
         if not activitylog:
             return {"Message": "The activity log does not exist, please try searching by different ID"},404
-        return activitylog.json()
+        return activitylog.json(), 200
 
     def post(self):
         data = ActivityLogResource.parser.parse_args()
@@ -48,3 +48,22 @@ class ActivityLogResource(Resource):
         except:
             return {"Message": "An error occured while inserting the activity log "}, 500
         return activitylog.json(),201
+
+    def delete(self, id):
+        activitylog = ActivityLog.find_by_id(id)
+        if activitylog:
+            activitylog.delete_from_db()
+        return {"message": "Activity log delete from database"}
+
+    def put(self,id):
+        data= ActivityLogResource.parser.parse_args()
+        actvitiylog = ActivityLog.find_by_id(id)
+        if not actvitiylog:
+            actvitiylog= ActivityLog(**data)
+        else:
+            actvitiylog.activity = data['activity']
+            actvitiylog.rating = data['rating']
+            actvitiylog.time_elasped = data['time_elapsed']
+            actvitiylog.description = data['description']
+        actvitiylog.save_to_db()
+        return actvitiylog.json()

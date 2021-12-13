@@ -42,7 +42,7 @@ class HealthLogResource(Resource):
     def put(self, id):
         data = HealthLogResource.parser.parse_args()
         healthlog = HealthLogModel.find_by_id(id)
-
+        
         if healthlog is None:
             healthlog = HealthLogModel(**data)
         else:
