@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 from resources.activitylog import Activities, ActivityLogResource
 from resources.healthlog import HealthLogList, HealthLogResource
