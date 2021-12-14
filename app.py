@@ -3,8 +3,6 @@ from resources.activitylog import ActivityLogResource
 from resources.healthlog import HealthLogList, HealthLogResource
 from resources.user import UserRegister, UserList, UserResource
 from db import db
-
-
 from config import Config
 from flask_migrate import Migrate
 from flask_restful import Api
@@ -16,10 +14,6 @@ migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
 
-
-@app.route("/")
-def index():
-    return "Hello world"
 
 
 api.add_resource(UserRegister, '/register')
