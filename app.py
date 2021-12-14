@@ -14,6 +14,9 @@ migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
 
+@app.route('/')
+def home():
+    return "hello world!"
 
 # API endpoints
 api.add_resource(UserRegister, '/register')
