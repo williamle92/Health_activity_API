@@ -13,7 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.Text(), nullable=False)
     healthlogs = db.relationship('HealthLogModel', backref='healthlogs', lazy="dynamic")
-    activitylogs = db.relationship('ActivityLog', backref='user', lazy="dynamic")
+    activitylogs = db.relationship('ActivityLog', backref='activitylogs', lazy="dynamic")
 
     def __init__(self, username, email, password):
         self.username = username
