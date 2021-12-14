@@ -15,7 +15,7 @@ db.init_app(app)
 api = Api(app)
 
 
-
+# API endpoints
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserList, '/users')
 api.add_resource(UserResource, "/user/<id>")
