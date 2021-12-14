@@ -2,6 +2,10 @@ from sqlalchemy.orm import backref
 from db import db
 
 class HealthLogModel(db.Model):
+    """
+    Health Log Flask-SQLAlchemy Model
+    Represent a health log object in table: health_log_model
+    """
     id = db.Column(db.Integer, primary_key=True)
     weight_in_pounds = db.Column(db.Integer, nullable=False)
     user_username = db.Column(db.String(60), db.ForeignKey('user.username'), nullable=False)

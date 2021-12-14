@@ -4,7 +4,7 @@ from db import db
 class ActivityLog(db.Model):
     """
     Activity Log Flask-SQLAlchemy Model
-    Represents objects contained in Activity Log table
+    Represents objects contained in table: activity
     """
     __tablename__ = "activity"
     id = db.Column(db.Integer, primary_key=True)
@@ -13,8 +13,7 @@ class ActivityLog(db.Model):
     rating = db.Column(db.String(25))
     time_elapsed = db.Column(db.Integer)
     description = db.Column(db.String(300))
-    
-  
+
 
     def __init__(self,user_username, activity, rating, time_elapsed, description):
         self.user_username =user_username
