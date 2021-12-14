@@ -8,7 +8,7 @@ class ActivityLog(db.Model):
     """
     __tablename__ = "activity"
     id = db.Column(db.Integer, primary_key=True)
-    user_username = db.Column(db.String(80), db.ForeignKey('user.username'), nullable=False)
+    user_username = db.Column(db.String(80), db.ForeignKey('userinfo.username'), nullable=False)
     activity = db.Column(db.String(100))
     rating = db.Column(db.String(25))
     time_elapsed = db.Column(db.Integer)
