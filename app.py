@@ -1,5 +1,5 @@
 from flask import Flask
-from resources.activitylog import ActivityLogResource
+from resources.activitylog import Activities, ActivityLogResource
 from resources.healthlog import HealthLogList, HealthLogResource
 from resources.user import UserRegister, UserList, UserResource
 from db import db
@@ -22,6 +22,7 @@ api.add_resource(UserResource, "/user/<id>")
 api.add_resource(HealthLogResource,'/health', "/health/<id>")
 api.add_resource(HealthLogList, '/healthlogs')
 api.add_resource(ActivityLogResource, '/activity/<id>', '/activity')
+api.add_resource(Activities, "/activities")
 
 if __name__ == "__main__":
     from db import db

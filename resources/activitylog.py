@@ -67,3 +67,7 @@ class ActivityLogResource(Resource):
             actvitiylog.description = data['description']
         actvitiylog.save_to_db()
         return actvitiylog.json()
+
+class Activities(Resource):
+    def get(self):
+        return {"data": [a.json() for a in ActivityLog.query.all()]}
