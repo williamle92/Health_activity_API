@@ -11,8 +11,6 @@ from flask_restful import Api
 
 app = Flask(__name__)
 app.config.from_object(Config)
-if os.environ.get('FLASK_ENV') == "production":
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://cplfxakjcgwgiw:92c50842d7a7fc18c7c3d8e670bb3fb951954014e7407df8f85ef5ddc3aa175d@ec2-18-214-214-252.compute-1.amazonaws.com:5432/dqfab3qnk8ilr"
 migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
