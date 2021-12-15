@@ -33,6 +33,8 @@ def create_app(config_class=Config):
 
     return app
 
+with app.app_context():
+    db.create_all()
 
 
 if __name__ == "__main__":
