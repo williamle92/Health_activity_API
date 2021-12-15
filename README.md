@@ -1,5 +1,5 @@
 # Health and activity tracker REST API with Flask:
-##https://activity-rest-api.herokuapp.com/
+## https://activity-rest-api.herokuapp.com/
 This API was design to create users, health logs and activity logs. There is CRUD functionality for the health logs and acitivity logs however, user are only limited to post and get methods. 
 
 **Note this project was created using a .env file, and will need a separate .env to run. 
