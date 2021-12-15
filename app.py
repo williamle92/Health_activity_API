@@ -25,9 +25,13 @@ api.add_resource(HealthLogList, '/healthlogs')
 api.add_resource(ActivityLogResource, '/activity/<id>', '/activity')
 api.add_resource(Activities, "/activities")
 
-def create_app(Config):
+def create_app(config_class=Config):
     app= Flask(__name__)
-    
+    app.config.from_object(config_class)
+    db.init_app(app)
+    migrate.init_app(app, db)
+
+    return app
 
 
 
