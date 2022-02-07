@@ -1,4 +1,5 @@
 from flask import Flask
+import sqlalchemy
 from resources.activitylog import Activities, ActivityLogResource
 from resources.healthlog import HealthLogList, HealthLogResource
 from resources.user import UserRegister, UserList, UserResource
@@ -30,7 +31,6 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     db.init_app(app)
     migrate.init_app(app, db)
-
     return app
 
 with app.app_context():
