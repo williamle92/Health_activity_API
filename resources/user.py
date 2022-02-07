@@ -4,6 +4,7 @@ from models.user import User
 
 
 class UserRegister(Resource):
+    # Parses the request and makes sure it has the required argument
     parser = reqparse.RequestParser()
     parser.add_argument('username',
                         type=str,
@@ -37,7 +38,7 @@ class UserResource(Resource):
             return user.json()
         return {"Message": "The user searched by user ID does not exist"}
 
-
+# Grabs a list of all the users
 class UserList(Resource):
     def get(self):
         return {"data": [user.json() for user in User.query.all()]}

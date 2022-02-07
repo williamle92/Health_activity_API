@@ -4,6 +4,7 @@ from models.user import User
 
 
 class ActivityLogResource(Resource):
+    # Parses the request and makes sure it has the required argument
     parser = reqparse.RequestParser()
     parser.add_argument('user_username',
     type=str,
@@ -31,11 +32,13 @@ class ActivityLogResource(Resource):
     help="Must contain key: description in string format"
     )
 
+
     def get(self, id):
         activitylog = ActivityLog.find_by_id(id)
         if not activitylog:
             return {"Message": "The activity log does not exist, please try searching by different ID"},404
         return activitylog.json(), 200
+
 
     def post(self):
         data = ActivityLogResource.parser.parse_args()
@@ -49,11 +52,13 @@ class ActivityLogResource(Resource):
             return {"Message": "An error occured while inserting the activity log "}, 500
         return activitylog.json(),201
 
+
     def delete(self, id):
         activitylog = ActivityLog.find_by_id(id)
         if activitylog:
             activitylog.delete_from_db()
         return {"message": "Activity log delete from database"}
+
 
     def put(self,id):
         data= ActivityLogResource.parser.parse_args()
@@ -68,6 +73,7 @@ class ActivityLogResource(Resource):
         actvitiylog.save_to_db()
         return actvitiylog.json()
 
+# Allows to grab data on all the activities
 class Activities(Resource):
     def get(self):
         return {"data": [a.json() for a in ActivityLog.query.all()]}

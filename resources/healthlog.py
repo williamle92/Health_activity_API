@@ -3,6 +3,7 @@ from models.healthlog import HealthLogModel
 from models.user import User
 
 class HealthLogResource(Resource):
+    # Parses the request and makes sure it has the required argument
     parser = reqparse.RequestParser()
     parser.add_argument("weight_in_pounds", 
     type=int,
@@ -21,6 +22,7 @@ class HealthLogResource(Resource):
             return healthlog.json()
         return {"messsage": "The health log could not be found"}, 404
 
+
     def post(self):
         data = HealthLogResource.parser.parse_args()
         user = User.find_by_username(data['user_username'])
@@ -33,11 +35,13 @@ class HealthLogResource(Resource):
             return {"Message": "An error occured while inserting the health log "}
         return healthlog.json(), 201
 
+
     def delete(self, id):
         healthlog = HealthLogModel.find_by_id(id)
         if healthlog:
             healthlog.delete_from_db()
         return {'message': 'Item deleted'}
+
 
     def put(self, id):
         data = HealthLogResource.parser.parse_args()
@@ -50,6 +54,7 @@ class HealthLogResource(Resource):
         healthlog.save_to_db()
         return healthlog.json()
 
+# Grabs a list of all the health logs
 class HealthLogList(Resource):
     def get(self):
         return {"data": [x.json() for x in HealthLogModel.query.all()]}
