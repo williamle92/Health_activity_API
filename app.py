@@ -1,5 +1,4 @@
 from flask import Flask
-import sqlalchemy
 from resources.activitylog import Activities, ActivityLogResource
 from resources.healthlog import HealthLogList, HealthLogResource
 from resources.user import UserRegister, UserList, UserResource
@@ -8,11 +7,19 @@ from config import Config
 from flask_migrate import Migrate
 from flask_restful import Api
 
-
+# Instantiate Flask app
 app = Flask(__name__)
+
+# Setting configurations from Config object 
 app.config.from_object(Config)
+
+# Instantiate migrate object
 migrate = Migrate(app, db)
+
+# Instantiate db
 db.init_app(app)
+
+# Instantiate API object
 api = Api(app)
 
 
@@ -26,6 +33,8 @@ api.add_resource(HealthLogList, '/healthlogs')
 api.add_resource(ActivityLogResource, '/activity/<id>', '/activity')
 api.add_resource(Activities, "/activities")
 
+
+# App factory 
 def create_app(config_class=Config):
     app= Flask(__name__)
     app.config.from_object(config_class)
