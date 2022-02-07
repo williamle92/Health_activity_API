@@ -1,6 +1,7 @@
 # Health and activity tracker REST API with Flask:
 ## About the Project
 This API was design to to track health and activity/excercises for each user. You can only create users, the update and delete function were removed to moderate data deletion. Each activity log and health log must be assigned with a user.  
+![ERD](/src/ERD.png "ERD Diagram")
 
 **Note this project was created using a .env file, and will need a separate .env to run. 
 ## Getting Started
