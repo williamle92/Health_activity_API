@@ -4,7 +4,7 @@ This API was design to to track health and activity/excercises for each user. Yo
 
 **Note this project was created using a .env file, and will need a separate .env to run. 
 ## Getting Started
-This application is deployed on heroku: (Health Activity API)[https://activity-rest-api.herokuapp.com/]. Please view the API documentation to get started (API Documentation)[https://documenter.getpostman.com/view/15868454/UVR7JnLC]
+This application is deployed on heroku: [Health Activity API](https://activity-rest-api.herokuapp.com/). Please view the API documentation to get started [API Documentation](https://documenter.getpostman.com/view/15868454/UVR7JnLC)
 
 ## Installation to use on local machine:
 
